@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SunObjectScript : MonoBehaviour 
+public class StarObjectScript : MonoBehaviour 
 {
 
 	// Use this for initialization
@@ -13,6 +13,12 @@ public class SunObjectScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		
 	}
+
+	 void OnTriggerEnter(Collider other) 
+	 {
+        Debug.Log("TriggerEntered!");
+        other.transform.parent = transform;
+    }
 }
