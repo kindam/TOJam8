@@ -8,13 +8,16 @@ public class PlanetObjectScript : MonoBehaviour
 
 	float timeCounter;
 
-	public Vector3 velocity;
+	Vector3 velocity;
 	Vector3 oldPosition;
+
+	public Vector3 initialVelocity;
 
 	// Use this for initialization
 	void Start () 
 	{
 		renderer.material.color = Color.cyan;
+		velocity = initialVelocity;
 	}
 	
 	// Update is called once per frame
