@@ -6,9 +6,10 @@ public class PlanetObjectScript : MonoBehaviour
 	public float orbitRadius = 10.0f;
 	public float orbitSpeed = 10.0f;
 
-	float timeCounter;
+	float rotationCounter;
+	public float rotationDirection = 1.0f;
 
-	Vector3 velocity;
+	public Vector3 velocity;
 	Vector3 oldPosition;
 
 	public Vector3 initialVelocity;
@@ -33,8 +34,9 @@ public class PlanetObjectScript : MonoBehaviour
 				Object.Destroy(GetComponent<Rigidbody>());
 			}
 
-			timeCounter += orbitSpeed * Time.deltaTime;
-			transform.localPosition = new Vector3( orbitRadius * Mathf.Cos(timeCounter), orbitRadius * Mathf.Sin(timeCounter), 0);
+			rotationCounter += orbitSpeed * Time.deltaTime * rotationDirection;
+			Vector3 targetPosition = new Vector3( orbitRadius * Mathf.Cos(rotationCounter), orbitRadius * Mathf.Sin(rotationCounter), 0);
+			transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime);
 			velocity = (transform.position - oldPosition)/Time.deltaTime;
 			oldPosition = transform.position;
 		}

@@ -21,8 +21,30 @@ public class StarObjectScript : MonoBehaviour
 	 void OnTriggerEnter(Collider other) 
 	 {
         Debug.Log("TriggerEntered!");
-        other.transform.parent = transform;
+        
         PlanetObjectScript planetScript = (PlanetObjectScript)(other.GetComponent<PlanetObjectScript>());
         planetScript.orbitRadius = colliderRadius;
+
+        // chose appropriate rotation direction
+        float direction = 1.0f; 
+        if(other.transform.position.y > transform.position.y)
+        {
+        	if( planetScript.velocity.x > 0)
+        		direction = -1.0f;
+        	else
+        		direction = 1.0f;
+        }
+        else
+        {
+        	if( planetScript.velocity.x > 0)
+        		direction = 1.0f;
+        	else
+        		direction = -1.0f;
+        }
+
+        // apply direction
+        planetScript.rotationDirection = direction;
+
+        other.transform.parent = transform;
     }
 }
