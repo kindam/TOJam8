@@ -37,6 +37,8 @@ public class IntroManagerScript : MonoBehaviour
 		if(TOJamBannerTimeCounter == 0)
 			StartCoroutine(HandleTOJamBannerCoroutine());
 		
+		if( Input.GetButton("Jump") )
+			Application.LoadLevel(1);
 	}
 
 

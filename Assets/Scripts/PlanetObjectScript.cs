@@ -51,9 +51,18 @@ public class PlanetObjectScript : MonoBehaviour
 			}
 		}
 
+		if(transform.position.x < -180 || transform.position.x > 180 || transform.position.y > 100 || transform.position.y < -100)
+			Application.LoadLevel(Application.loadedLevel);
+
 
 	
 	}
-
+/*
+	void OnBecameInvisible()
+	{
+		Debug.Log("Offscreen!");
+		Application.LoadLevel(Application.loadedLevel);
+	}
+*/
 
 }
